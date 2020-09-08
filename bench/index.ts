@@ -7,7 +7,7 @@ import { htmlEscape } from 'escape-goat'
 
 import { escapeHTML, escapeHTMLBuf } from '../index'
 
-const fixture = fs.readFileSync(join(__dirname, 'fixture.html'), 'utf8')
+const fixture = fs.readFileSync(join(__dirname, 'fixture'), 'utf8')
 const miniFixture = '<div>{props.getNumber()}</div>'
 const fixtureBuffer = Buffer.from(fixture)
 const miniFixtureBuffer = Buffer.from(miniFixture)
