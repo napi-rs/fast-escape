@@ -1,6 +1,6 @@
 {
   "name": "@napi-rs/escape-darwin",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "os": ["darwin"],
   "main": "escape.darwin.node",
   "files": ["escape.darwin.node"],
