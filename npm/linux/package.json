@@ -1,6 +1,6 @@
 {
   "name": "@napi-rs/escape-linux",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "os": ["linux"],
   "main": "escape.linux.node",
   "files": ["escape.linux.node"],
