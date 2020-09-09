@@ -10,7 +10,8 @@
   "os": ["darwin", "linux", "win32"],
   "cpu": ["x64"],
   "napi": {
-    "name": "escape"
+    "name": "escape",
+    "musl": ["linux"]
   },
   "engines": {
     "node": ">= 8.9"
