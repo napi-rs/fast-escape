@@ -1,0 +1,19 @@
+{
+  "name": "@napi-rs/escape-linux-musl",
+  "version": "0.1.0",
+  "os": ["linux-musl"],
+  "main": "escape.linux-musl.node",
+  "files": ["escape.linux-musl.node"],
+  "description": "Template project for writing node package with napi-rs",
+  "keywords": ["napi-rs", "NAPI", "N-API", "Rust", "node-addon", "node-addon-api"],
+  "license": "MIT",
+  "cpu": ["x64"],
+  "engines": {
+    "node": ">= 8.9"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "repository": "git@github.com:napi-rs/escape.git"
+}
