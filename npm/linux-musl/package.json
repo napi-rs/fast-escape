@@ -1,6 +1,6 @@
 {
   "name": "@napi-rs/escape-linux-musl",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "os": ["linux"],
   "main": "escape.linux-musl.node",
   "files": ["escape.linux-musl.node"],
