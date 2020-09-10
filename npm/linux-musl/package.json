@@ -1,7 +1,7 @@
 {
   "name": "@napi-rs/escape-linux-musl",
   "version": "0.2.0",
-  "os": ["linux-musl"],
+  "os": ["linux"],
   "main": "escape.linux-musl.node",
   "files": ["escape.linux-musl.node"],
   "description": "Template project for writing node package with napi-rs",
