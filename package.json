@@ -41,7 +41,7 @@
     "@swc-node/register": "^0.4.11",
     "@types/benchmark": "^1.0.33",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
-    "@typescript-eslint/parser": "^4.1.1",
+    "@typescript-eslint/parser": "^4.2.0",
     "ava": "^3.12.1",
     "benchmark": "^2.1.4",
     "chalk": "^4.1.0",
