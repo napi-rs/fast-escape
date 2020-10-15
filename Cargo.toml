@@ -1,28 +1,26 @@
 [package]
-name = "napi-escape"
-version = "0.1.0"
 authors = ["LongYinan <lynweklm@gmail.com>"]
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+name = "napi-escape"
+version = "0.1.0"
 
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies]
-napi = { version = "0.5" }
-napi-derive = { version = "0.5" }
+napi = {git = "https://github.com/napi-rs/napi-rs.git"}
+napi-derive = {git = "https://github.com/napi-rs/napi-rs.git"}
 v_htmlescape = "0.11"
 
 [target.'cfg(all(unix, not(target_env = "musl")))'.dependencies]
-jemallocator = { version = "0.3", features = ["disable_initial_exec_tls"] }
+jemallocator = {version = "0.3", features = ["disable_initial_exec_tls"]}
 
 [target.'cfg(windows)'.dependencies]
-mimalloc = { version = "0.1" }
+mimalloc = {version = "0.1"}
 
 [build-dependencies]
-napi-build = "0.2"
+napi-build = {git = "https://github.com/napi-rs/napi-rs.git"}
 
 [profile.release]
-opt-level = 3
 lto = true
+opt-level = 3

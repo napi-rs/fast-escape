@@ -1,13 +1,13 @@
 {
-  "name": "@napi-rs/escape-linux",
+  "name": "@napi-rs/escape-linux-arm64-gnu",
   "version": "0.2.1",
   "os": ["linux"],
-  "main": "escape.linux.node",
-  "files": ["escape.linux.node"],
+  "cpu": ["arm64"],
+  "main": "escape.linux-arm64-gnu.node",
+  "files": ["escape.linux-arm64-gnu.node"],
   "description": "Template project for writing node package with napi-rs",
   "keywords": ["napi-rs", "NAPI", "N-API", "Rust", "node-addon", "node-addon-api"],
   "license": "MIT",
-  "cpu": ["x64"],
   "engines": {
     "node": ">= 8.9"
   },

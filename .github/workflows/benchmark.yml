@@ -58,7 +58,7 @@ jobs:
         run: yarn build
 
       - name: 'Run benchmark'
-        run: node -r @swc-node/register ./bench/index.ts | tee bench.txt
+        run: yarn bench | tee bench.txt
 
       - name: Store benchmark result
         uses: rhysd/github-action-benchmark@v1
