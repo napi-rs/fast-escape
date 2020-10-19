@@ -12,8 +12,8 @@ const miniFixture = '<div>{props.getNumber()}</div>'
 const fixtureBuffer = Buffer.from(fixture)
 const miniFixtureBuffer = Buffer.from(miniFixture)
 
-const largeSuite = new Suite('Escape html benchmark # Large input')
-const miniSuite = new Suite('Escape html benchmark # Small input')
+const largeSuite = new Suite('Large input')
+const miniSuite = new Suite('Small input')
 
 function run(suite: Suite, fx: string, fxBuffer: Buffer) {
   return new Promise((resolve) => {
@@ -38,6 +38,8 @@ function run(suite: Suite, fx: string, fxBuffer: Buffer) {
         htmlEscape(fx)
       })
       .on('cycle', function (event: Benchmark.Event) {
+        // @ts-expect-error
+        event.target.name = `${event.target.name} @ ${suite.name}`
         console.info(String(event.target))
       })
       .on('complete', function (this: Benchmark.Target & Benchmark.Suite) {
