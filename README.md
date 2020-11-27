@@ -14,15 +14,15 @@ yarn add @napi-rs/fast-escape
 
 ### Operating Systems
 
-| Linux | macOS | Windows x64 MSVC |
-| ----- | ----- | ---------------- |
-| ✓     | ✓     | ✓                |
+| Linux arm64/x64 | macOS x64 | Windows i686/x64 |
+| --------------- | --------- | ---------------- |
+| ✓               | ✓         | ✓                |
 
 ### NodeJS
 
-| Node10 | Node 12 | Node14 |
-| ------ | ------- | ------ |
-| ✓      | ✓       | ✓      |
+| Node10 | Node 12 | Node14 | Node15 |
+| ------ | ------- | ------ | ------ |
+| ✓      | ✓       | ✓      | ✓      |
 
 ## Performance
 

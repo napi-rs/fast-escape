@@ -1,13 +1,13 @@
 {
-  "name": "@napi-rs/escape-darwin",
+  "name": "@napi-rs/escape-win32-ia32-msvc",
   "version": "0.2.1",
-  "os": ["darwin"],
-  "main": "escape.darwin.node",
-  "files": ["escape.darwin.node"],
+  "os": ["win32"],
+  "cpu": ["ia32"],
+  "main": "escape.win32-ia32-msvc.node",
+  "files": ["escape.win32-ia32-msvc.node"],
   "description": "Template project for writing node package with napi-rs",
   "keywords": ["napi-rs", "NAPI", "N-API", "Rust", "node-addon", "node-addon-api"],
   "license": "MIT",
-  "cpu": ["x64"],
   "engines": {
     "node": ">= 8.9"
   },
