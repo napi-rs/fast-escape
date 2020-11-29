@@ -60,8 +60,6 @@ jobs:
         with:
           path: node_modules
           key: npm-cache-${{ matrix.os }}-node@14-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            npm-cache-
       - name: 'Install dependencies'
         run: yarn install --frozen-lockfile --registry https://registry.npmjs.org
 
@@ -119,8 +117,6 @@ jobs:
         with:
           path: node_modules
           key: npm-cache-alpine-node@10-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            npm-cache-
 
       - name: Pull docker image
         run: |
@@ -185,8 +181,6 @@ jobs:
         with:
           path: node_modules
           key: npm-cache-linux-aarch64-gnu-node@14-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            npm-cache-
 
       - name: Install cross compile toolchain
         run: |
@@ -227,8 +221,6 @@ jobs:
         with:
           path: node_modules
           key: npm-cache-windows-i686-node@lts-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            npm-cache-
 
       - name: 'Install dependencies'
         run: yarn install --frozen-lockfile --registry https://registry.npmjs.org
@@ -297,8 +289,6 @@ jobs:
         with:
           path: node_modules
           key: npm-cache-test-${{ matrix.os }}-node@${{ matrix.node }}-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            npm-cache-
 
       - name: 'Install dependencies'
         run: yarn install --frozen-lockfile --registry https://registry.npmjs.org
@@ -346,8 +336,6 @@ jobs:
         with:
           path: node_modules
           key: npm-cache-alpine-node-@${{ matrix.node }}-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            npm-cache-
 
       - name: 'Install dependencies'
         run: yarn install --frozen-lockfile --ignore-scripts --registry https://registry.npmjs.org
@@ -392,8 +380,6 @@ jobs:
         with:
           path: node_modules
           key: npm-cache-test-${{ matrix.os }}-node@${{ matrix.node }}-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            npm-cache-
 
       - name: 'Install dependencies'
         run: yarn install --frozen-lockfile --registry https://registry.npmjs.org
@@ -456,8 +442,7 @@ jobs:
         with:
           path: node_modules
           key: npm-cache-publish-ubuntu-latest-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            npm-cache-
+
       - name: 'Install dependencies'
         run: yarn install --frozen-lockfile --registry https://registry.npmjs.org
 
