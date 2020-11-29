@@ -1,6 +1,6 @@
 {
   "name": "@napi-rs/escape-linux-x64-musl",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "os": ["linux"],
   "cpu": ["x64"],
   "main": "escape.linux-x64-musl.node",
