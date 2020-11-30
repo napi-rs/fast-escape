@@ -199,6 +199,64 @@ jobs:
           name: bindings-linux-aarch64
           path: escape.*.node
 
+  build-apple-silicon:
+    name: nightly - aarch64-apple-darwin - node@14
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 14
+          check-latest: true
+
+      - name: Install
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly
+          profile: minimal
+          override: true
+
+      - name: Install aarch64 toolchain
+        run: rustup target add aarch64-apple-darwin
+
+      - name: Generate Cargo.lock
+        uses: actions-rs/cargo@v1
+        with:
+          command: generate-lockfile
+
+      - name: Cache cargo registry
+        uses: actions/cache@v1
+        with:
+          path: ~/.cargo/registry
+          key: nightly-apple-aarch64-node@14-cargo-registry-trimmed-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Cache cargo index
+        uses: actions/cache@v1
+        with:
+          path: ~/.cargo/git
+          key: nightly-apple-aarch64-node@14-cargo-index-trimmed-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Cache NPM dependencies
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: npm-cache-apple-aarch64-node@14-${{ hashFiles('yarn.lock') }}
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --registry https://registry.npmjs.org
+
+      - name: Cross build aarch64
+        run: yarn build --target aarch64-apple-darwin
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: bindings-apple-aarch64
+          path: escape.*.node
+
   build-win32-i686:
     runs-on: windows-latest
     env:
@@ -411,6 +469,7 @@ jobs:
       - test-musl
       - test-aarch64
       - build-win32-i686
+      - build-apple-silicon
     runs-on: ubuntu-latest
     steps:
       - name: auto-merge
@@ -427,6 +486,7 @@ jobs:
       - test-musl
       - test-aarch64
       - build-win32-i686
+      - build-apple-silicon
 
     steps:
       - uses: actions/checkout@v2
