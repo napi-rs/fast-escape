@@ -6,7 +6,7 @@ use std::str;
 use napi::{CallContext, Env, JsBuffer, JsBufferValue, JsObject, JsString, Ref, Result, Task};
 use v_htmlescape::escape;
 
-#[cfg(all(unix, not(target_env = "musl")))]
+#[cfg(all(unix, not(target_env = "musl"), not(target_arch = "aarch64")))]
 #[global_allocator]
 static ALLOC: jemallocator::Jemalloc = jemallocator::Jemalloc;
 
