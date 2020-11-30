@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1606631777045,
+  "lastUpdate": 1606723159978,
   "repoUrl": "https://github.com/napi-rs/fast-escape",
   "entries": {
     "Benchmark": [
@@ -400,6 +400,86 @@ window.BENCHMARK_DATA = {
             "range": "±0.70%",
             "unit": "ops/sec",
             "extra": "94 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "lynweklm@gmail.com",
+            "name": "LongYinan",
+            "username": "Brooooooklyn"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "24f6cf6a9ef541e090a8ca33b349d0b1e0d4d2b4",
+          "message": "Merge pull request #72 from napi-rs/apple-silicon\n\nApple silicon",
+          "timestamp": "2020-11-30T15:56:25+08:00",
+          "tree_id": "9081e855a2b8ed65aca9d82e2c935344882369d9",
+          "url": "https://github.com/napi-rs/fast-escape/commit/24f6cf6a9ef541e090a8ca33b349d0b1e0d4d2b4"
+        },
+        "date": 1606723159303,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "napi @ Large input",
+            "value": 589,
+            "range": "±0.43%",
+            "unit": "ops/sec",
+            "extra": "91 samples"
+          },
+          {
+            "name": "napi#buff @ Large input",
+            "value": 742,
+            "range": "±0.61%",
+            "unit": "ops/sec",
+            "extra": "89 samples"
+          },
+          {
+            "name": "napi#asyncBuff @ Large input",
+            "value": 707,
+            "range": "±0.59%",
+            "unit": "ops/sec",
+            "extra": "84 samples"
+          },
+          {
+            "name": "javascript @ Large input",
+            "value": 429,
+            "range": "±0.83%",
+            "unit": "ops/sec",
+            "extra": "84 samples"
+          },
+          {
+            "name": "napi @ Small input",
+            "value": 1704800,
+            "range": "±0.71%",
+            "unit": "ops/sec",
+            "extra": "91 samples"
+          },
+          {
+            "name": "napi#buff @ Small input",
+            "value": 1752714,
+            "range": "±0.74%",
+            "unit": "ops/sec",
+            "extra": "89 samples"
+          },
+          {
+            "name": "napi#asyncBuff @ Small input",
+            "value": 32458,
+            "range": "±0.90%",
+            "unit": "ops/sec",
+            "extra": "77 samples"
+          },
+          {
+            "name": "javascript @ Small input",
+            "value": 1353746,
+            "range": "±0.59%",
+            "unit": "ops/sec",
+            "extra": "92 samples"
           }
         ]
       }
