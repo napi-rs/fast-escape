@@ -1,6 +1,6 @@
 {
   "name": "@napi-rs/escape-win32-ia32-msvc",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "os": ["win32"],
   "cpu": ["ia32"],
   "main": "escape.win32-ia32-msvc.node",

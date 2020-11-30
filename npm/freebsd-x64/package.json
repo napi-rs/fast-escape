@@ -1,6 +1,6 @@
 {
   "name": "@napi-rs/escape-freebsd-x64",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "os": ["freebsd"],
   "cpu": ["x64"],
   "main": "escape.freebsd-x64.node",
