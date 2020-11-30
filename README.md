@@ -10,13 +10,11 @@ yarn add @napi-rs/fast-escape
 
 ## Support matrix
 
-> ⚠️ Linux musl has not been supported now.
-
 ### Operating Systems
 
-| Linux arm64/x64 | macOS x64 | Windows i686/x64 |
-| --------------- | --------- | ---------------- |
-| ✓               | ✓         | ✓                |
+| Linux arm64/x64 | macOS x64/aarch64 | Windows i686/x64 |
+| --------------- | ----------------- | ---------------- |
+| ✓               | ✓                 | ✓                |
 
 ### NodeJS
 
@@ -55,7 +53,7 @@ Escape html benchmark # Small input bench suite: Fastest is napi#buff
 ## Develop requirements
 
 - Install latest `Rust`
-- Install `NodeJS@8.9+` which supports `N-API`
+- Install `NodeJS@10+` which supports `N-API`
 - Install `yarn@1.x`
 
 ## Test in local
