@@ -46,12 +46,12 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@napi-rs/cli@^1.0.0-alpha.9":
-  version "1.0.0-alpha.9"
-  resolved "https://registry.npmjs.org/@napi-rs/cli/-/cli-1.0.0-alpha.9.tgz#ab598fc33e7dd30cbcba4c1d9053bea388972019"
-  integrity sha512-55VAI0iMBJQibz7xQXpfFPyJv/pjI/kBK012RLtNKECuUKEZl63RzZtc8D1TqnLMkkN26BvWVNwLW/RR4TYz3g==
+"@napi-rs/cli@^1.0.0-alpha.11":
+  version "1.0.0-alpha.11"
+  resolved "https://registry.yarnpkg.com/@napi-rs/cli/-/cli-1.0.0-alpha.11.tgz#c2785b482ccd83c9cfba4c9ccd18281ea8e5a942"
+  integrity sha512-gD1DzW0tMGRyf1svRNT1gnf9+XrdP8q3uvO5Ask9xp3pl8V+ErzkPyW1xCpHESuVpBJJLeXMkOHb24nuXE1UAg==
   dependencies:
-    "@octokit/rest" "^18.0.9"
+    "@octokit/rest" "^18.0.12"
     chalk "^4.1.0"
     clipanion "^2.6.2"
     debug "^4.3.1"
@@ -211,9 +211,9 @@
     "@octokit/plugin-request-log" "^1.0.0"
     "@octokit/plugin-rest-endpoint-methods" "3.17.0"
 
-"@octokit/rest@^18.0.9":
+"@octokit/rest@^18.0.12":
   version "18.0.12"
-  resolved "https://registry.npmjs.org/@octokit/rest/-/rest-18.0.12.tgz#278bd41358c56d87c201e787e8adc0cac132503a"
+  resolved "https://registry.yarnpkg.com/@octokit/rest/-/rest-18.0.12.tgz#278bd41358c56d87c201e787e8adc0cac132503a"
   integrity sha512-hNRCZfKPpeaIjOVuNJzkEL6zacfZlBPV8vw8ReNeyUkVvbuCvvrrx8K8Gw2eyHHsmd4dPlAxIXIZ9oHhJfkJpw==
   dependencies:
     "@octokit/core" "^3.2.3"
