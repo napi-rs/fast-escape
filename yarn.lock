@@ -46,10 +46,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@napi-rs/cli@^1.0.0-alpha.12":
-  version "1.0.0-alpha.12"
-  resolved "https://registry.yarnpkg.com/@napi-rs/cli/-/cli-1.0.0-alpha.12.tgz#1960d4545882eac207b9b4447760d713f9cb4b48"
-  integrity sha512-S3hVqSaqr/tFgUcgrGR1bC1fgZinw5Ztswx4XM2MiRJF3zUkXfsi0jrWNN9Ym7LZ0qpUK8g3alfmLRc/gpGznQ==
+"@napi-rs/cli@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@napi-rs/cli/-/cli-1.0.0.tgz#b9139570016ec4c2087a9079b72c1cdc04b46581"
+  integrity sha512-hWOkP1swphh+tll7s8sY87gyyJSdYpLkkhBEUuzKlTQkGXHm0nUSPqzhnrxR5dMPLQ9T1dUQVP5Zxq0IVofDhQ==
   dependencies:
     "@octokit/rest" "^18.0.12"
     chalk "^4.1.0"
