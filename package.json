@@ -1,6 +1,6 @@
 {
   "name": "@napi-rs/escape",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0",
   "description": "Escape a string for use in HTML or the inverse",
   "main": "index.js",
   "repository": "git@github.com:napi-rs/escape.git",
