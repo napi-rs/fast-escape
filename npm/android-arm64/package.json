@@ -1,10 +1,10 @@
 {
-  "name": "@napi-rs/escape-win32-ia32-msvc",
+  "name": "@napi-rs/escape-android-arm64",
   "version": "1.0.0-alpha.2",
-  "os": ["win32"],
-  "cpu": ["ia32"],
-  "main": "escape.win32-ia32-msvc.node",
-  "files": ["escape.win32-ia32-msvc.node"],
+  "os": ["android"],
+  "cpu": ["arm64"],
+  "main": "escape.android-arm64.node",
+  "files": ["escape.android-arm64.node"],
   "description": "Escape a string for use in HTML or the inverse",
   "keywords": [
     "napi-rs",
