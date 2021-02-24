@@ -10,7 +10,7 @@ crate-type = ["cdylib"]
 [dependencies]
 napi = "1"
 napi-derive = "1"
-v_htmlescape = "0.12"
+v_htmlescape = "0.13"
 
 [target.'cfg(all(unix, not(target_env = "musl"), not(target_arch = "aarch64")))'.dependencies]
 jemallocator = {version = "0.3", features = ["disable_initial_exec_tls"]}
