@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1606804897746,
+  "lastUpdate": 1618816454510,
   "repoUrl": "https://github.com/napi-rs/fast-escape",
   "entries": {
     "Benchmark": [
@@ -800,6 +800,86 @@ window.BENCHMARK_DATA = {
             "range": "±0.24%",
             "unit": "ops/sec",
             "extra": "90 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "lynweklm@gmail.com",
+            "name": "LongYinan",
+            "username": "Brooooooklyn"
+          },
+          "committer": {
+            "email": "lynweklm@gmail.com",
+            "name": "LongYinan",
+            "username": "Brooooooklyn"
+          },
+          "distinct": true,
+          "id": "47903e2c0083e6793c79272fe704166008f46ac9",
+          "message": "ci: try fix bench job",
+          "timestamp": "2021-04-19T15:10:19+08:00",
+          "tree_id": "fe06bcf36bd47b205d813519bfafd23765c5c16e",
+          "url": "https://github.com/napi-rs/fast-escape/commit/47903e2c0083e6793c79272fe704166008f46ac9"
+        },
+        "date": 1618816453756,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "napi @ Large input",
+            "value": 701,
+            "range": "±0.25%",
+            "unit": "ops/sec",
+            "extra": "92 samples"
+          },
+          {
+            "name": "napi#buff @ Large input",
+            "value": 860,
+            "range": "±0.14%",
+            "unit": "ops/sec",
+            "extra": "94 samples"
+          },
+          {
+            "name": "napi#asyncBuff @ Large input",
+            "value": 822,
+            "range": "±0.20%",
+            "unit": "ops/sec",
+            "extra": "88 samples"
+          },
+          {
+            "name": "javascript @ Large input",
+            "value": 508,
+            "range": "±0.46%",
+            "unit": "ops/sec",
+            "extra": "91 samples"
+          },
+          {
+            "name": "napi @ Small input",
+            "value": 1912191,
+            "range": "±0.48%",
+            "unit": "ops/sec",
+            "extra": "96 samples"
+          },
+          {
+            "name": "napi#buff @ Small input",
+            "value": 2174999,
+            "range": "±0.15%",
+            "unit": "ops/sec",
+            "extra": "91 samples"
+          },
+          {
+            "name": "napi#asyncBuff @ Small input",
+            "value": 35710,
+            "range": "±1.29%",
+            "unit": "ops/sec",
+            "extra": "85 samples"
+          },
+          {
+            "name": "javascript @ Small input",
+            "value": 1526720,
+            "range": "±0.21%",
+            "unit": "ops/sec",
+            "extra": "91 samples"
           }
         ]
       }
