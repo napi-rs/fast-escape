@@ -7,16 +7,10 @@ use napi::{CallContext, Env, JsBuffer, JsBufferValue, JsObject, JsString, Ref, R
 use v_htmlescape::escape;
 
 #[cfg(all(
-  unix,
+  target_arch = "x86_64",
   not(target_env = "musl"),
-  not(target_arch = "aarch64"),
-  not(target_arch = "arm"),
   not(debug_assertions)
 ))]
-#[global_allocator]
-static ALLOC: jemallocator::Jemalloc = jemallocator::Jemalloc;
-
-#[cfg(windows)]
 #[global_allocator]
 static ALLOC: mimalloc::MiMalloc = mimalloc::MiMalloc;
 
