@@ -8,7 +8,7 @@ version = "0.1.0"
 crate-type = ["cdylib"]
 
 [dependencies]
-napi = "1"
+napi = "2"
 napi-derive = "1"
 v_htmlescape = "0.13"
 
