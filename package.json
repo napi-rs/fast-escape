@@ -60,7 +60,7 @@
     "version": "napi version"
   },
   "devDependencies": {
-    "@napi-rs/cli": "^1.1.0",
+    "@napi-rs/cli": "^2.2.0",
     "@types/benchmark": "^2.1.1",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.29.0",
