@@ -8,9 +8,9 @@ version = "0.1.0"
 crate-type = ["cdylib"]
 
 [dependencies]
-napi = "1"
-napi-derive = "1"
-v_htmlescape = "0.13"
+napi = {version = "2", default-features = false, features = ["napi3"]}
+napi-derive = {version = "2", default-features = false, features = ["type-def"]}
+v_htmlescape = "0.14"
 
 [target.'cfg(all(target_arch = "x86_64", not(target_env = "musl")))'.dependencies]
 mimalloc = {version = "0.1"}

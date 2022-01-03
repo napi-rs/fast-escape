@@ -1,10 +1,16 @@
 {
   "name": "@napi-rs/escape-android-arm64",
   "version": "1.0.0",
-  "os": ["android"],
-  "cpu": ["arm64"],
+  "os": [
+    "android"
+  ],
+  "cpu": [
+    "arm64"
+  ],
   "main": "escape.android-arm64.node",
-  "files": ["escape.android-arm64.node"],
+  "files": [
+    "escape.android-arm64.node"
+  ],
   "description": "Escape a string for use in HTML or the inverse",
   "keywords": [
     "napi-rs",

@@ -1,9 +1,10 @@
-#[macro_use]
-extern crate napi_derive;
-
 use std::str;
 
-use napi::{CallContext, Env, JsBuffer, JsBufferValue, JsObject, JsString, Ref, Result, Task};
+use napi::{
+  bindgen_prelude::{AbortSignal, AsyncTask, Buffer},
+  Env, JsBuffer, JsBufferValue, Ref, Result, Task,
+};
+use napi_derive::napi;
 use v_htmlescape::escape;
 
 #[cfg(all(
@@ -14,55 +15,43 @@ use v_htmlescape::escape;
 #[global_allocator]
 static ALLOC: mimalloc::MiMalloc = mimalloc::MiMalloc;
 
-#[module_exports]
-fn init(mut exports: JsObject) -> Result<()> {
-  exports.create_named_method("escapeHTML", escape_html)?;
-  exports.create_named_method("escapeHTMLBuf", escape_html_buf)?;
-  exports.create_named_method("asyncEscapeHTMLBuf", async_escape_html_buf)?;
-  Ok(())
-}
-
 #[repr(transparent)]
-struct EscapeTask(Ref<JsBufferValue>);
+pub struct EscapeTask(Ref<JsBufferValue>);
 
+#[napi]
 impl Task for EscapeTask {
   type Output = String;
-  type JsValue = JsString;
+  type JsValue = String;
 
   fn compute(&mut self) -> Result<Self::Output> {
     Ok(escape(unsafe { str::from_utf8_unchecked(&self.0) }).to_string())
   }
 
-  fn resolve(self, env: Env, output: Self::Output) -> Result<Self::JsValue> {
+  fn resolve(&mut self, _env: Env, output: Self::Output) -> Result<Self::JsValue> {
+    Ok(output)
+  }
+
+  fn finally(&mut self, env: Env) -> Result<()> {
     self.0.unref(env)?;
-    env.create_string_from_std(output)
+    Ok(())
   }
 }
 
-#[js_function(1)]
-fn escape_html(ctx: CallContext) -> Result<JsString> {
-  let input = ctx.get::<JsString>(0)?.into_utf8()?;
-
-  ctx
-    .env
-    .create_string_from_std(escape(input.as_str()?).to_string())
+#[napi(js_name = "escapeHTML")]
+pub fn escape_html(input: String) -> String {
+  escape(input.as_str()).to_string()
 }
 
-#[js_function(1)]
-fn escape_html_buf(ctx: CallContext) -> Result<JsString> {
-  let input = ctx.get::<JsBuffer>(0)?.into_value()?;
-  ctx
-    .env
-    .create_string_from_std(escape(unsafe { str::from_utf8_unchecked(&input) }).to_string())
+#[napi(js_name = "escapeHTMLBuf")]
+pub fn escape_html_buf(input: Buffer) -> String {
+  escape(unsafe { str::from_utf8_unchecked(input.as_ref()) }).to_string()
 }
 
-#[js_function(1)]
-fn async_escape_html_buf(ctx: CallContext) -> Result<JsObject> {
-  let input = ctx.get::<JsBuffer>(0)?;
+#[napi(js_name = "asyncEscapeHTMLBuf")]
+pub fn async_escape_html_buf(
+  input: JsBuffer,
+  signal: Option<AbortSignal>,
+) -> Result<AsyncTask<EscapeTask>> {
   let task = EscapeTask(input.into_ref()?);
-
-  ctx
-    .env
-    .spawn(task)
-    .map(|async_task| async_task.promise_object())
+  Ok(AsyncTask::with_optional_signal(task, signal))
 }
