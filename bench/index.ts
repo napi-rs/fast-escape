@@ -1,22 +1,23 @@
 import fs from 'fs'
 import { join } from 'path'
+import { fileURLToPath } from 'url'
 
-import Benchmark, { Suite } from 'benchmark'
+import Benchmark from 'benchmark'
 import chalk from 'chalk'
 import { htmlEscape } from 'escape-goat'
 
-import { escapeHTML, escapeHTMLBuf, asyncEscapeHTMLBuf } from '../index'
+import { escapeHTML, escapeHTMLBuf, asyncEscapeHTMLBuf } from '../index.js'
 
-const fixture = fs.readFileSync(join(__dirname, 'fixture'), 'utf8')
+const fixture = fs.readFileSync(join(fileURLToPath(import.meta.url), '..', 'fixture'), 'utf8')
 const miniFixture = '<div>{props.getNumber()}</div>'
 const fixtureBuffer = Buffer.from(fixture)
 const miniFixtureBuffer = Buffer.from(miniFixture)
 
-const largeSuite = new Suite('Large input')
-const miniSuite = new Suite('Small input')
+const largeSuite = new Benchmark.Suite('Large input')
+const miniSuite = new Benchmark.Suite('Small input')
 
-function run(suite: Suite, fx: string, fxBuffer: Buffer) {
-  return new Promise((resolve) => {
+function run(suite: Benchmark.Suite, fx: string, fxBuffer: Buffer) {
+  return new Promise<void>((resolve) => {
     suite
       .add('napi', () => {
         escapeHTML(fx)

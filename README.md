@@ -10,7 +10,6 @@ yarn add @napi-rs/fast-escape
 
 ## Support matrix
 
-
 |                  | node12 | node14 | node16 |
 | ---------------- | ------ | ------ | ------ |
 | Windows x64      | ✓      | ✓      | ✓      |
