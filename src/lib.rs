@@ -8,12 +8,11 @@ use napi_derive::napi;
 use v_htmlescape::escape;
 
 #[cfg(all(
-  target_arch = "x86_64",
-  not(target_env = "musl"),
+  not(all(target_os = "linux", target_env = "musl", target_arch = "aarch64")),
   not(debug_assertions)
 ))]
 #[global_allocator]
-static ALLOC: mimalloc::MiMalloc = mimalloc::MiMalloc;
+static ALLOC: mimalloc_rust::GlobalMiMalloc = mimalloc_rust::GlobalMiMalloc;
 
 #[repr(transparent)]
 pub struct EscapeTask(Ref<JsBufferValue>);
