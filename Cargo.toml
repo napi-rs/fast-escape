@@ -1,6 +1,6 @@
 [package]
 authors = ["LongYinan <lynweklm@gmail.com>"]
-edition = "2018"
+edition = "2021"
 name = "napi-escape"
 version = "0.1.0"
 
@@ -12,7 +12,7 @@ napi = { version = "2", default-features = false, features = ["napi3"] }
 napi-derive = { version = "2", default-features = false, features = [
   "type-def",
 ] }
-v_htmlescape = "0.14"
+v_htmlescape = "0.15"
 
 [target.'cfg(not(target_os = "linux"))'.dependencies]
 mimalloc-rust = { version = "0.2" }

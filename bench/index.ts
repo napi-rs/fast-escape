@@ -39,7 +39,6 @@ function run(suite: Benchmark.Suite, fx: string, fxBuffer: Buffer) {
         htmlEscape(fx)
       })
       .on('cycle', function (event: Benchmark.Event) {
-        // @ts-expect-error
         event.target.name = `${event.target.name} @ ${suite.name}`
         console.info(String(event.target))
       })
