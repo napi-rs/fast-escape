@@ -119,7 +119,7 @@ __metadata:
     chalk: ^5.1.0
     escape-goat: ^4.0.0
     eslint: ^8.24.0
-    eslint-config-prettier: ^8.5.0
+    eslint-config-prettier: ^9.0.0
     eslint-plugin-import: ^2.26.0
     eslint-plugin-prettier: ^4.2.1
     eslint-plugin-sonarjs: ^0.25.0
@@ -1549,14 +1549,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:^8.5.0":
-  version: 8.5.0
-  resolution: "eslint-config-prettier@npm:8.5.0"
+"eslint-config-prettier@npm:^9.0.0":
+  version: 9.1.0
+  resolution: "eslint-config-prettier@npm:9.1.0"
   peerDependencies:
     eslint: ">=7.0.0"
   bin:
     eslint-config-prettier: bin/cli.js
-  checksum: 0d0f5c32e7a0ad91249467ce71ca92394ccd343178277d318baf32063b79ea90216f4c81d1065d60f96366fdc60f151d4d68ae7811a58bd37228b84c2083f893
+  checksum: 9229b768c879f500ee54ca05925f31b0c0bafff3d9f5521f98ff05127356de78c81deb9365c86a5ec4efa990cb72b74df8612ae15965b14136044c73e1f6a907
   languageName: node
   linkType: hard
 
