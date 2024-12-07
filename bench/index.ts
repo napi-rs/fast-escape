@@ -2,8 +2,7 @@ import fs from 'fs'
 import { join } from 'path'
 import { fileURLToPath } from 'url'
 
-import Benchmark from 'benchmark'
-import chalk from 'chalk'
+import { Bench } from 'tinybench'
 import { htmlEscape } from 'escape-goat'
 
 import { escapeHTML, escapeHTMLBuf, asyncEscapeHTMLBuf } from '../index.js'
@@ -13,45 +12,29 @@ const miniFixture = '<div>{props.getNumber()}</div>'
 const fixtureBuffer = Buffer.from(fixture)
 const miniFixtureBuffer = Buffer.from(miniFixture)
 
-const largeSuite = new Benchmark.Suite('Large input')
-const miniSuite = new Benchmark.Suite('Small input')
+const largeSuite = new Bench({ name: 'Large input' })
+const miniSuite = new Bench({ name: 'Small input' })
 
-function run(suite: Benchmark.Suite, fx: string, fxBuffer: Buffer) {
-  return new Promise<void>((resolve) => {
-    suite
-      .add('napi', () => {
-        escapeHTML(fx)
-      })
-      .add('napi#buff', () => {
-        escapeHTMLBuf(fxBuffer)
-      })
-      .add(
-        'napi#asyncBuff',
-        async (defer: any) => {
-          await asyncEscapeHTMLBuf(fxBuffer)
-          defer.resolve()
-        },
-        {
-          defer: true,
-        },
-      )
-      .add('javascript', () => {
-        htmlEscape(fx)
-      })
-      .on('cycle', function (event: Benchmark.Event) {
-        event.target.name = `${event.target.name} @ ${suite.name}`
-        console.info(String(event.target))
-      })
-      .on('complete', function (this: Benchmark.Target & Benchmark.Suite) {
-        console.info(
-          `${this.name} bench suite: Fastest is ${chalk.green(
-            this.filter('fastest').map((t: Benchmark.Target) => t.name),
-          )}`,
-        )
-        resolve()
-      })
-      .run()
+async function run(suite: Bench, fx: string, fxBuffer: Buffer) {
+  suite.add('napi', () => {
+    escapeHTML(fx)
   })
+
+  suite.add('napi#buff', () => {
+    escapeHTMLBuf(fxBuffer)
+  })
+
+  suite.add('napi#asyncBuff', async () => {
+    await asyncEscapeHTMLBuf(fxBuffer)
+  })
+
+  suite.add('javascript', () => {
+    htmlEscape(fx)
+  })
+
+  await suite.run()
+
+  console.table(suite.table())
 }
 
 run(largeSuite, fixture, fixtureBuffer).then(() => run(miniSuite, miniFixture, miniFixtureBuffer))
