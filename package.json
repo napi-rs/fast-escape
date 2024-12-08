@@ -70,7 +70,7 @@
     "escape-goat": "^4.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
-    "npm-run-all2": "^5.0.0",
+    "npm-run-all2": "^7.0.0",
     "oxlint": "^0.14.1",
     "prettier": "^3.4.2",
     "tinybench": "^3.0.7",
