@@ -9,7 +9,7 @@ use v_htmlescape::escape;
 
 #[cfg(not(target_family = "wasm"))]
 #[global_allocator]
-static ALLOC: mimalloc::MiMalloc = mimalloc::MiMalloc;
+static ALLOC: mimalloc_safe::MiMalloc = mimalloc_safe::MiMalloc;
 
 #[repr(transparent)]
 pub struct EscapeTask(Uint8Array);

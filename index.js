@@ -35,7 +35,11 @@ const isMuslFromFilesystem = () => {
 }
 
 const isMuslFromReport = () => {
-  const report = typeof process.report.getReport === 'function' ? process.report.getReport() : null
+  let report = null
+  if (typeof process.report?.getReport === 'function') {
+    process.report.excludeNetwork = true
+    report = process.report.getReport()
+  }
   if (!report) {
     return null
   }
@@ -60,7 +64,13 @@ const isMuslFromChildProcess = () => {
 }
 
 function requireNative() {
-  if (process.platform === 'android') {
+  if (process.env.NAPI_RS_NATIVE_LIBRARY_PATH) {
+    try {
+      nativeBinding = require(process.env.NAPI_RS_NATIVE_LIBRARY_PATH)
+    } catch (err) {
+      loadErrors.push(err)
+    }
+  } else if (process.platform === 'android') {
     if (process.arch === 'arm64') {
       try {
         return require('./escape.android-arm64.node')
@@ -72,7 +82,6 @@ function requireNative() {
       } catch (e) {
         loadErrors.push(e)
       }
-
     } else if (process.arch === 'arm') {
       try {
         return require('./escape.android-arm-eabi.node')
@@ -84,7 +93,6 @@ function requireNative() {
       } catch (e) {
         loadErrors.push(e)
       }
-
     } else {
       loadErrors.push(new Error(`Unsupported architecture on Android ${process.arch}`))
     }
@@ -100,7 +108,6 @@ function requireNative() {
       } catch (e) {
         loadErrors.push(e)
       }
-
     } else if (process.arch === 'ia32') {
       try {
         return require('./escape.win32-ia32-msvc.node')
@@ -112,7 +119,6 @@ function requireNative() {
       } catch (e) {
         loadErrors.push(e)
       }
-
     } else if (process.arch === 'arm64') {
       try {
         return require('./escape.win32-arm64-msvc.node')
@@ -124,21 +130,20 @@ function requireNative() {
       } catch (e) {
         loadErrors.push(e)
       }
-
     } else {
       loadErrors.push(new Error(`Unsupported architecture on Windows: ${process.arch}`))
     }
   } else if (process.platform === 'darwin') {
     try {
-        return require('./escape.darwin-universal.node')
-      } catch (e) {
-        loadErrors.push(e)
-      }
-      try {
-        return require('@napi-rs/escape-darwin-universal')
-      } catch (e) {
-        loadErrors.push(e)
-      }
+      return require('./escape.darwin-universal.node')
+    } catch (e) {
+      loadErrors.push(e)
+    }
+    try {
+      return require('@napi-rs/escape-darwin-universal')
+    } catch (e) {
+      loadErrors.push(e)
+    }
 
     if (process.arch === 'x64') {
       try {
@@ -151,7 +156,6 @@ function requireNative() {
       } catch (e) {
         loadErrors.push(e)
       }
-
     } else if (process.arch === 'arm64') {
       try {
         return require('./escape.darwin-arm64.node')
@@ -163,7 +167,6 @@ function requireNative() {
       } catch (e) {
         loadErrors.push(e)
       }
-
     } else {
       loadErrors.push(new Error(`Unsupported architecture on macOS: ${process.arch}`))
     }
@@ -179,7 +182,6 @@ function requireNative() {
       } catch (e) {
         loadErrors.push(e)
       }
-
     } else if (process.arch === 'arm64') {
       try {
         return require('./escape.freebsd-arm64.node')
@@ -191,7 +193,6 @@ function requireNative() {
       } catch (e) {
         loadErrors.push(e)
       }
-
     } else {
       loadErrors.push(new Error(`Unsupported architecture on FreeBSD: ${process.arch}`))
     }
@@ -199,106 +200,98 @@ function requireNative() {
     if (process.arch === 'x64') {
       if (isMusl()) {
         try {
-        return require('./escape.linux-x64-musl.node')
-      } catch (e) {
-        loadErrors.push(e)
-      }
-      try {
-        return require('@napi-rs/escape-linux-x64-musl')
-      } catch (e) {
-        loadErrors.push(e)
-      }
-
+          return require('./escape.linux-x64-musl.node')
+        } catch (e) {
+          loadErrors.push(e)
+        }
+        try {
+          return require('@napi-rs/escape-linux-x64-musl')
+        } catch (e) {
+          loadErrors.push(e)
+        }
       } else {
         try {
-        return require('./escape.linux-x64-gnu.node')
-      } catch (e) {
-        loadErrors.push(e)
-      }
-      try {
-        return require('@napi-rs/escape-linux-x64-gnu')
-      } catch (e) {
-        loadErrors.push(e)
-      }
-
+          return require('./escape.linux-x64-gnu.node')
+        } catch (e) {
+          loadErrors.push(e)
+        }
+        try {
+          return require('@napi-rs/escape-linux-x64-gnu')
+        } catch (e) {
+          loadErrors.push(e)
+        }
       }
     } else if (process.arch === 'arm64') {
       if (isMusl()) {
         try {
-        return require('./escape.linux-arm64-musl.node')
-      } catch (e) {
-        loadErrors.push(e)
-      }
-      try {
-        return require('@napi-rs/escape-linux-arm64-musl')
-      } catch (e) {
-        loadErrors.push(e)
-      }
-
+          return require('./escape.linux-arm64-musl.node')
+        } catch (e) {
+          loadErrors.push(e)
+        }
+        try {
+          return require('@napi-rs/escape-linux-arm64-musl')
+        } catch (e) {
+          loadErrors.push(e)
+        }
       } else {
         try {
-        return require('./escape.linux-arm64-gnu.node')
-      } catch (e) {
-        loadErrors.push(e)
-      }
-      try {
-        return require('@napi-rs/escape-linux-arm64-gnu')
-      } catch (e) {
-        loadErrors.push(e)
-      }
-
+          return require('./escape.linux-arm64-gnu.node')
+        } catch (e) {
+          loadErrors.push(e)
+        }
+        try {
+          return require('@napi-rs/escape-linux-arm64-gnu')
+        } catch (e) {
+          loadErrors.push(e)
+        }
       }
     } else if (process.arch === 'arm') {
       if (isMusl()) {
         try {
-        return require('./escape.linux-arm-musleabihf.node')
-      } catch (e) {
-        loadErrors.push(e)
-      }
-      try {
-        return require('@napi-rs/escape-linux-arm-musleabihf')
-      } catch (e) {
-        loadErrors.push(e)
-      }
-
+          return require('./escape.linux-arm-musleabihf.node')
+        } catch (e) {
+          loadErrors.push(e)
+        }
+        try {
+          return require('@napi-rs/escape-linux-arm-musleabihf')
+        } catch (e) {
+          loadErrors.push(e)
+        }
       } else {
         try {
-        return require('./escape.linux-arm-gnueabihf.node')
-      } catch (e) {
-        loadErrors.push(e)
-      }
-      try {
-        return require('@napi-rs/escape-linux-arm-gnueabihf')
-      } catch (e) {
-        loadErrors.push(e)
-      }
-
+          return require('./escape.linux-arm-gnueabihf.node')
+        } catch (e) {
+          loadErrors.push(e)
+        }
+        try {
+          return require('@napi-rs/escape-linux-arm-gnueabihf')
+        } catch (e) {
+          loadErrors.push(e)
+        }
       }
     } else if (process.arch === 'riscv64') {
       if (isMusl()) {
         try {
-        return require('./escape.linux-riscv64-musl.node')
-      } catch (e) {
-        loadErrors.push(e)
-      }
-      try {
-        return require('@napi-rs/escape-linux-riscv64-musl')
-      } catch (e) {
-        loadErrors.push(e)
-      }
-
+          return require('./escape.linux-riscv64-musl.node')
+        } catch (e) {
+          loadErrors.push(e)
+        }
+        try {
+          return require('@napi-rs/escape-linux-riscv64-musl')
+        } catch (e) {
+          loadErrors.push(e)
+        }
       } else {
         try {
-        return require('./escape.linux-riscv64-gnu.node')
-      } catch (e) {
-        loadErrors.push(e)
-      }
-      try {
-        return require('@napi-rs/escape-linux-riscv64-gnu')
-      } catch (e) {
-        loadErrors.push(e)
-      }
-
+          return require('./escape.linux-riscv64-gnu.node')
+        } catch (e) {
+          loadErrors.push(e)
+        }
+        try {
+          return require('@napi-rs/escape-linux-riscv64-gnu')
+        } catch (e) {
+          loadErrors.push(e)
+        }
       }
     } else if (process.arch === 'ppc64') {
       try {
@@ -311,7 +304,6 @@ function requireNative() {
       } catch (e) {
         loadErrors.push(e)
       }
-
     } else if (process.arch === 's390x') {
       try {
         return require('./escape.linux-s390x-gnu.node')
@@ -323,7 +315,6 @@ function requireNative() {
       } catch (e) {
         loadErrors.push(e)
       }
-
     } else {
       loadErrors.push(new Error(`Unsupported architecture on Linux: ${process.arch}`))
     }
@@ -364,6 +355,7 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
+module.exports = nativeBinding
 module.exports.asyncEscapeHTMLBuf = nativeBinding.asyncEscapeHTMLBuf
 module.exports.escapeHTML = nativeBinding.escapeHTML
 module.exports.escapeHTMLBuf = nativeBinding.escapeHTMLBuf
