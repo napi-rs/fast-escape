@@ -1,6 +1,6 @@
 [package]
 authors = ["LongYinan <lynweklm@gmail.com>"]
-edition = "2021"
+edition = "2024"
 name = "napi-escape"
 version = "0.1.0"
 
@@ -8,8 +8,8 @@ version = "0.1.0"
 crate-type = ["cdylib"]
 
 [dependencies]
-napi = { version = "3.0.0-beta", default-features = false, features = ["napi3"] }
-napi-derive = { version = "3.0.0-beta", default-features = false, features = [
+napi = { version = "3.0.0", default-features = false, features = ["napi3"] }
+napi-derive = { version = "3.0.0", default-features = false, features = [
   "type-def",
 ] }
 v_htmlescape = "0.15"
