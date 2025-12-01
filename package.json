@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "@napi-rs/cli": "^3.0.4",
-    "@oxc-node/core": "^0.0.34",
+    "@oxc-node/core": "^0.0.35",
     "@types/node": "^24.1.0",
     "ava": "^6.4.1",
     "benchmark": "^2.1.4",
