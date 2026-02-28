@@ -64,7 +64,7 @@
     "@napi-rs/cli": "^3.0.4",
     "@oxc-node/core": "^0.0.35",
     "@types/node": "^24.1.0",
-    "ava": "^6.4.1",
+    "ava": "^7.0.0",
     "benchmark": "^2.1.4",
     "chalk": "^5.4.1",
     "escape-goat": "^4.0.0",
