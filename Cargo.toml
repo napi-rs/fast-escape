@@ -12,7 +12,7 @@ napi = { version = "3.0.0", default-features = false, features = ["napi3"] }
 napi-derive = { version = "3.0.0", default-features = false, features = [
   "type-def",
 ] }
-v_htmlescape = "0.15"
+v_htmlescape = "0.16"
 
 [target.'cfg(all(not(target_os = "linux"), not(target_family = "wasm")))'.dependencies]
 mimalloc-safe = { version = "0.1", features = ["skip_collect_on_exit"] }
