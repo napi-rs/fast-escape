@@ -5,7 +5,7 @@ use napi::{
   Env, Result, Task,
 };
 use napi_derive::napi;
-use v_htmlescape::escape;
+use v_htmlescape::escape_fmt;
 
 #[cfg(not(target_family = "wasm"))]
 #[global_allocator]
@@ -20,7 +20,7 @@ impl Task for EscapeTask {
   type JsValue = String;
 
   fn compute(&mut self) -> Result<Self::Output> {
-    Ok(escape(unsafe { str::from_utf8_unchecked(&self.0) }).to_string())
+    Ok(escape_fmt(unsafe { str::from_utf8_unchecked(&self.0) }).to_string())
   }
 
   fn resolve(&mut self, _env: Env, output: Self::Output) -> Result<Self::JsValue> {
@@ -30,12 +30,12 @@ impl Task for EscapeTask {
 
 #[napi(js_name = "escapeHTML")]
 pub fn escape_html(input: String) -> String {
-  escape(input.as_str()).to_string()
+  escape_fmt(input.as_str()).to_string()
 }
 
 #[napi(js_name = "escapeHTMLBuf")]
 pub fn escape_html_buf(input: &[u8]) -> String {
-  escape(unsafe { str::from_utf8_unchecked(input) }).to_string()
+  escape_fmt(unsafe { str::from_utf8_unchecked(input) }).to_string()
 }
 
 #[napi(js_name = "asyncEscapeHTMLBuf")]
