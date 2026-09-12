@@ -12,8 +12,7 @@ napi = { version = "3.0.0", default-features = false, features = ["napi3"] }
 napi-derive = { version = "3.0.0", default-features = false, features = [
   "type-def",
 ] }
-# Local verification: replace with a crates.io version once html-escape-simd is published
-html-escape-simd = { path = "../escape-simd/crates/html-escape-simd" }
+html-escape-simd = "0.1"
 
 [target.'cfg(all(not(target_os = "linux"), not(target_family = "wasm")))'.dependencies]
 mimalloc-safe = { version = "0.1", features = ["skip_collect_on_exit"] }
