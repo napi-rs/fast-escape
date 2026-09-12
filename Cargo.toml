@@ -8,20 +8,20 @@ version = "0.1.0"
 crate-type = ["cdylib"]
 
 [dependencies]
-napi = { version = "3.0.0", default-features = false, features = ["napi3"] }
-napi-derive = { version = "3.0.0", default-features = false, features = [
+napi = { version = "3.12.4", default-features = false, features = ["napi3"] }
+napi-derive = { version = "3.6.5", default-features = false, features = [
   "type-def",
 ] }
 html-escape-simd = "0.1"
 
 [target.'cfg(all(not(target_os = "linux"), not(target_family = "wasm")))'.dependencies]
-mimalloc-safe = { version = "0.1", features = ["skip_collect_on_exit"] }
+mimalloc-safe = { version = "0.1.66", features = ["skip_collect_on_exit"] }
 
 [target.'cfg(target_os = "linux")'.dependencies]
-mimalloc-safe = { version = "0.1", features = ["local_dynamic_tls", "skip_collect_on_exit"] }
+mimalloc-safe = { version = "0.1.66", features = ["local_dynamic_tls", "skip_collect_on_exit"] }
 
 [build-dependencies]
-napi-build = "2"
+napi-build = "2.4.2"
 
 [profile.release]
 lto = true
