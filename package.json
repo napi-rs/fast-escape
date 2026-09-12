@@ -61,20 +61,20 @@
     "version": "napi version"
   },
   "devDependencies": {
-    "@napi-rs/cli": "^3.0.4",
+    "@napi-rs/cli": "^3.9.1",
     "@oxc-node/core": "^0.1.0",
-    "@types/node": "^24.1.0",
-    "ava": "^7.0.0",
+    "@types/node": "^24.13.4",
+    "ava": "^8.0.1",
     "benchmark": "^2.1.4",
-    "chalk": "^5.4.1",
+    "chalk": "^6.0.0",
     "escape-goat": "^4.0.0",
     "husky": "^9.1.7",
-    "lint-staged": "^16.1.2",
-    "npm-run-all2": "^8.0.4",
-    "oxlint": "^1.8.0",
-    "prettier": "^3.6.2",
-    "tinybench": "^6.0.0",
-    "typescript": "^6.0.0"
+    "lint-staged": "^17.5.1",
+    "npm-run-all2": "^9.0.3",
+    "oxlint": "^1.82.0",
+    "prettier": "^3.9.6",
+    "tinybench": "^6.2.0",
+    "typescript": "^7.0.2"
   },
   "lint-staged": {
     "*.@(js|ts|tsx)": [
@@ -89,9 +89,9 @@
       "--import",
       "@oxc-node/core/register"
     ],
-    "extensions": {
-      "ts": "module"
-    },
+    "extensions": [
+      "ts"
+    ],
     "timeout": "3m",
     "workerThreads": false,
     "environmentVariables": {
