@@ -63,14 +63,14 @@ jobs:
           - host: windows-latest
             target: aarch64-pc-windows-msvc
             build: yarn build --target aarch64-pc-windows-msvc
-    name: stable - ${{ matrix.settings.target }} - node@22
+    name: stable - ${{ matrix.settings.target }} - node@24
     runs-on: ${{ matrix.settings.host }}
     steps:
       - uses: actions/checkout@v7
       - name: Setup node
         uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: 24
           cache: yarn
       - name: Install
         uses: dtolnay/rust-toolchain@stable
@@ -109,6 +109,7 @@ jobs:
         uses: actions/setup-node@v7
         if: matrix.settings.target == 'i686-pc-windows-msvc'
         with:
+          # Node 23+ dropped 32-bit Windows builds, so i686 stays on 22
           node-version: 22
           cache: yarn
           architecture: x86
