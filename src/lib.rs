@@ -2,14 +2,10 @@ use std::str;
 
 use napi::{
   bindgen_prelude::{AbortSignal, AsyncTask, Uint8Array},
-  Env, Error, Result, Task,
+  Env, Result, Task,
 };
 use napi_derive::napi;
-use html_escape_simd::escape_html as simd_escape_html;
-
-fn escape(input: &str) -> Result<String> {
-  simd_escape_html(input).map_err(|e| Error::from_reason(e.to_string()))
-}
+use v_htmlescape::escape;
 
 #[cfg(not(target_family = "wasm"))]
 #[global_allocator]
@@ -24,7 +20,7 @@ impl Task for EscapeTask {
   type JsValue = String;
 
   fn compute(&mut self) -> Result<Self::Output> {
-    escape(unsafe { str::from_utf8_unchecked(&self.0) })
+    Ok(escape(unsafe { str::from_utf8_unchecked(&self.0) }).to_string())
   }
 
   fn resolve(&mut self, _env: Env, output: Self::Output) -> Result<Self::JsValue> {
@@ -33,13 +29,13 @@ impl Task for EscapeTask {
 }
 
 #[napi(js_name = "escapeHTML")]
-pub fn escape_html(input: String) -> Result<String> {
-  escape(input.as_str())
+pub fn escape_html(input: String) -> String {
+  escape(input.as_str()).to_string()
 }
 
 #[napi(js_name = "escapeHTMLBuf")]
-pub fn escape_html_buf(input: &[u8]) -> Result<String> {
-  escape(unsafe { str::from_utf8_unchecked(input) })
+pub fn escape_html_buf(input: &[u8]) -> String {
+  escape(unsafe { str::from_utf8_unchecked(input) }).to_string()
 }
 
 #[napi(js_name = "asyncEscapeHTMLBuf")]
