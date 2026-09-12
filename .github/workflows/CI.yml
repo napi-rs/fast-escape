@@ -228,6 +228,10 @@ jobs:
         node:
           - '22'
           - '24'
+        exclude:
+          # Node 24 dropped linux-armv7l, so node:24-slim/-alpine have no arm/v7 image
+          - target: armv7-unknown-linux-gnueabihf
+            node: '24'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
