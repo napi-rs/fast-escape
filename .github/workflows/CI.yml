@@ -70,7 +70,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: 26
           cache: yarn
       - name: Install
         uses: dtolnay/rust-toolchain@stable
@@ -110,7 +110,7 @@ jobs:
         if: matrix.settings.target == 'i686-pc-windows-msvc'
         with:
           # Node 23+ dropped 32-bit Windows builds, so i686 stays on 22
-          node-version: 22
+          node-version: 26
           cache: yarn
           architecture: x86
       - name: Build
@@ -300,7 +300,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: 26
           cache: yarn
       - name: Install dependencies
         run: yarn install
